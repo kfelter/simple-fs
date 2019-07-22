@@ -1,0 +1,18 @@
+2019/07/21 22:50:47 main.go:47: Starting Server :8081
+2019/07/21 22:51:45 main.go:35: [[::1]:50024] GET /info
+2019/07/21 23:31:49 main.go:76: Starting Server :8081
+2019/07/21 23:31:59 main.go:38: No Api key for ipstack
+2019/07/21 23:31:59 main.go:76: Starting Server :8081
+2019/07/21 23:32:12 main.go:56: [[::1]:61339] GET /info
+2019/07/21 23:32:50 main.go:76: Starting Server :8081
+2019/07/21 23:32:53 main.go:56: [[::1]:62065] GET /info
+2019/07/21 23:53:09 main.go:75: Starting Server :8081
+2019/07/21 23:53:22 main.go:53: [[::1]:62382] GET /info
+2019/07/21 23:59:34 main.go:53: [[::1]:62383] GET /info
+2019/07/22 00:01:16 main.go:53: [[::1]:63447] GET /info
+2019/07/22 00:03:03 main.go:53: [[::1]:63889] GET /info
+2019/07/22 00:05:30 main.go:76: Starting Server :8081
+2019/07/22 00:05:36 main.go:54: [[::1]:64527] GET /info
+2019/07/22 00:10:07 main.go:77: Starting Server :8081
+2019/07/22 00:10:14 main.go:54: [[::1]:49293] GET /info
+2019/07/22 00:10:14 main.go:59: [[::1]:49293] Local: { }

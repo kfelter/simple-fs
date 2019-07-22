@@ -1,5 +1,6 @@
 <head>
     <title>Kyle Felter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 <style>
     .body {
@@ -30,11 +31,20 @@
     .name {
         text-align: center;
     }
+    .message {
+        background-color: black;
+        color: green;
+        text-align: center;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
 </style>
 
 <body class="body">
+    <div class="message" id="thank">Thank you for visiting!</div>
     <h1 class="profile name">Kyle Felter</h1>
-    <img class="profile pic" src="./me.jpg">
+    <img class="profile pic" src="./ME.jpg">
     <p class="profile pic description">
         Goofy. Love inventing, hacking, and learning.
     </p>
@@ -44,17 +54,29 @@
         more video games. Today I use python to automate my workflows so I can play more video games.</p>
     <h3 class="profile links header">Social</h3>
     <div class="profile links">
-        Connect with me on <a class="link" href="https://www.linkedin.com/in/kyle-f-770931b3/">linkedin</a><br>
-        Follow me on <a class="link" href="https://github.com/felts94" target="_blank">Code</a>, <a class="link" href="https://twitter.com/iFELTER" target="_blank">twitter</a>, and <a class="link" href="https://www.instagram.com/felts94/" target="_blank">instagram</a><br>
+        Connect with me on <a class="link" target="_blank" href="https://www.linkedin.com/in/kyle-f-770931b3/">linkedin</a><br>
+        Follow me on <a class="link" href="https://github.com/felts94" target="_blank">Github</a>, <a class="link" href="https://twitter.com/iFELTER" target="_blank">twitter</a>, and <a class="link" href="https://www.instagram.com/felts94/" target="_blank">instagram</a><br>
     </div>
     <h3 class="profile projects header">Projects</h3>
     <div class="profile projects">
         <ul class="profile projects list">
-            <li>simple-fs <a class="link" href="https://github.com/felts94/simple-fs">Code</a> (code driving this page and the web server)</li>
-            <li>queue-app <a class="link" href="https://github.com/felts94/queue-app">Code</a> <a class="link" href="http://18.234.196.95:8080/">Live</a></li>
-            <li>Hueput <a class="link" href="https://github.com/felts94/CoreColor">Code</a> <a class="link" href="https://s3.amazonaws.com/core-color/index.html">Live</a></li>
-            <li>Forrest <a class="link" href="https://github.com/felts94/caverunner/blob/master/fractal.js">Code</a> <a class="link" href="https://s3.amazonaws.com/caverunner.co-website/index.html">Live</a></li>
-            <li>Arduino memory game <a class="link" href="">Code</a> <a class="link" href="">YouTube</a></li>
+            <li>simple-fs <a class="link" target="_blank" href="https://github.com/felts94/simple-fs">Code</a> (code driving this page and the web server)</li>
+            <li>queue-app <a class="link" target="_blank" href="https://github.com/felts94/queue-app">Code</a> <a class="link" target="_blank" href="http://18.234.196.95:8080/">Live</a></li>
+            <li>Hueput <a class="link" target="_blank" href="https://github.com/felts94/CoreColor">Code</a> <a class="link" target="_blank" href="https://s3.amazonaws.com/core-color/index.html">Live</a></li>
+            <li>Forrest <a class="link" target="_blank" href="https://github.com/felts94/caverunner/blob/master/fractal.js">Code</a> <a class="link" target="_blank" href="https://s3.amazonaws.com/caverunner.co-website/index.html">Live</a></li>
+            <li>Arduino memory game <a class="link" target="_blank" href="https://github.com/felts94/ard-memory-game">Code</a> <a class="link" target="_blank" href="https://www.youtube.com/watch?v=zAuerOaZ_Z8">YouTube</a></li>
         </ul>
     </div>
+    <script>
+        function getInfo() {
+            
+            $.get(`/info`, (resp) => {
+                if (resp.info.city !== "") {
+                    document.getElementById("thank").innerText = "Thank you for visiting from " + resp.info.city + ", " + resp.info.region_name + "!";
+                }
+            })
+        }
+        getInfo();
+            
+    </script>
 </body>

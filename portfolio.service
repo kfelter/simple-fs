@@ -1,0 +1,10 @@
+[Service]
+User=root
+Restart=always
+Type=simple
+WorkingDirectory=/home/ubuntu/simple-fs
+Environment=API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ExecStart=/home/ubuntu/simple-fs/portfolio.linux
+
+[Install]
+WantedBy=multi-user.target
