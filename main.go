@@ -1,6 +1,8 @@
 package main
 
 import (
+	"crypto/rand"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -23,7 +25,7 @@ type Echo struct {
 }
 
 var apiURL = "api.ipstack.com"
-var APIKEY = "xxx"
+var APIKEY = "4e53216245834fa6154a2247d3165396"
 
 func main() {
 	startHTTPServer()
@@ -51,12 +53,41 @@ func startHTTPServer() {
 		fmt.Fprintf(w, "ok")
 	})
 	http.HandleFunc("/info", func(w http.ResponseWriter, r *http.Request) {
-		log.Printf("[%s] %s %s", r.RemoteAddr, r.Method, r.URL)
+		// put cookie in the browser for this url
+		cookie := &http.Cookie{
+			Name:  "root",
+			Value: "http://kylefelter.com",
+			Path:  "/",
+		}
+		http.SetCookie(w, cookie)
+
+		if c, err := r.Cookie("kyle-felter"); err != nil {
+			s, err := rhex(20)
+			if err != nil {
+				log.Printf(err.Error())
+			}
+			cookie = &http.Cookie{
+				Name:  "kyle-felter",
+				Value: fmt.Sprintf("Random hash %s", s),
+				Path:  "http://kfelter.com/",
+			}
+			http.SetCookie(w, cookie)
+		} else {
+			log.Printf("    USER: %s", c.Value)
+		}
 
 		s := strings.Split(r.RemoteAddr, ":")
 
 		info := getUserLocation(s[0])
-		log.Printf("[%s] Local: %v", r.RemoteAddr, info)
+		log.Printf("[%s] %s %s %s %s", r.RemoteAddr, r.Method, r.URL, info.Region, info.City)
+
+		for _, cookie := range r.Cookies() {
+			log.Printf("    cookie: %s %s %s", cookie.Domain, cookie.Name, cookie.Value)
+		}
+
+		for _, header := range r.Header {
+			log.Printf("    header: %v", header)
+		}
 
 		response := Echo{
 			Headers: r.Header,
@@ -107,4 +138,12 @@ func getUserLocation(ip string) Info {
 	}
 	err = json.Unmarshal(respBody, &info)
 	return info
+}
+
+func rhex(n int) (string, error) {
+	bytes := make([]byte, n)
+	if _, err := rand.Read(bytes); err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(bytes), nil
 }

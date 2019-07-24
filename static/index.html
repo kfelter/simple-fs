@@ -1,7 +1,8 @@
 <head>
-    <title>Kyle Felter</title>
+    <title>Kyle Felter Software Developer</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="My Software Development portfolio and personal website">
 </head>
 
 <style>
@@ -12,6 +13,7 @@
         margin-right: auto;
         text-align: center;
     }
+
     @media screen and (min-width: 800px) {
         .profile {
             max-width: 80%;
@@ -49,6 +51,14 @@
         text-decoration: none;
     }
 
+    .project {
+        font-size: 20;
+    }
+
+    .small {
+        font-size: 14;
+    }
+
 
 
     .work {
@@ -84,7 +94,7 @@
 <body class="body">
     <div class="message" id="thank">Thank you for visiting!</div>
     <h1 class="profile name">Kyle Felter</h1>
-    <img class="profile pic" src="./ME.jpg">
+    <img alt="Kyle Felter - Software Developer" class="profile pic" src="./ME.jpg">
     <p class="profile pic description">
         Goofy. Love inventing, hacking, and learning.
     </p>
@@ -98,7 +108,8 @@
                 automating my tasks since high school using my TI84 to write programs to speed up my homework so I could
                 play
                 more video games. Today I use python to automate my workflows so I can play more video games.</p>
-            <p class="profile description">Resume <a class="profile link" href="./Resume.pdf">PDF</a> <a class="profile link" href="./Resume.md">Markdown</a></p>
+            <p class="profile description">Resume <a class="profile link" href="./Resume.pdf">PDF</a> <a
+                    class="profile link" href="./Resume.md">Markdown</a></p>
         </div>
         <div class="right-half">
             <h3 class="work links header">Social</h3>
@@ -112,17 +123,23 @@
             <h3 class="work projects header">Projects</h3>
             <div class="work projects">
                 <ul class="work projects list">
-                    <li>Simple-fs <a class="link" target="_blank" href="https://github.com/felts94/simple-fs">Code</a></li>
-                    <li>Queue-app <a class="link" target="_blank" href="https://github.com/felts94/queue-app">Code</a>,
-                        <a class="link" target="_blank" href="http://18.234.196.95:8080/">Live</a></li>
-                    <li>Hueput <a class="link" target="_blank" href="https://github.com/felts94/CoreColor">Code</a>, <a
-                            class="link" target="_blank" href="https://s3.amazonaws.com/core-color/index.html">Live</a>
+                    <li><span class="project">Blog</span> <a class="link small" target="_blank" href="https://github.com/felts94/blog">Code</a>, <a class="link small" target="_blank" href="http://kfelter.com:8082/">Live</a>
+                    <p>
+                        Built with a simple go file server driving this website and Hugo<br>
+                        There is acually a lot going on with this, it serves <a class="link" href="./img00001.JPG" target="_blank">images</a>, <a class="link" href="./song.mp3" target="_blank">songs</a> and <a class="link" href="./dogs.MOV" target="_blank">movies</a>
+                        Deployed on an t2.nano EC2 in AWS<br>
+                    </p></li>
+                    <li>Queue App <a class="link small" target="_blank" href="https://github.com/felts94/queue-app">Code</a>,
+                        <a class="link small" target="_blank" href="http://18.234.196.95:8080/">Live</a></li>
+                    <li>Hueput <a class="link small" target="_blank" href="https://github.com/felts94/CoreColor">Code</a>, <a
+                            class="link small" target="_blank" href="https://s3.amazonaws.com/core-color/index.html">Live</a>
                     </li>
-                    <li>Forrest <a class="link" target="_blank"
-                            href="https://github.com/felts94/caverunner/blob/master/fractal.js">Code</a>, <a class="link"
-                            target="_blank" href="https://s3.amazonaws.com/caverunner.co-website/index.html">Live</a>
+                    <li>Forrest <a class="link small" target="_blank"
+                            href="https://github.com/felts94/caverunner/blob/master/fractal.js">Code</a>, <a
+                            class="link small" target="_blank"
+                            href="https://s3.amazonaws.com/caverunner.co-website/index.html">Live</a>
                     </li>
-                    <li>Arduino memory game <a class="link" target="_blank"
+                    <li>Arduino memory game <a class="link small" target="_blank"
                             href="https://github.com/felts94/ard-memory-game">Code</a>, <a class="link" target="_blank"
                             href="https://www.youtube.com/watch?v=zAuerOaZ_Z8">YouTube</a></li>
                 </ul>
