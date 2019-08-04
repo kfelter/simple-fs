@@ -15,10 +15,6 @@
     }
 
     @media screen and (min-width: 800px) {
-        .profile {
-            max-width: 80%;
-            margin: auto;
-        }
 
         .pic {
             width: 20%;
@@ -32,13 +28,14 @@
             display: grid;
         }
 
-        .left-half {
+        /* .left-half {
             grid-column: 1;
         }
 
         .right-half {
             grid-column: 2;
-        }
+            width: 100%;
+        } */
     }
 
     .body {
@@ -115,33 +112,73 @@
             <h3 class="work links header">Social</h3>
             <div class="work links">
                 Connect with me on <a class="link" target="_blank"
-                    href="https://www.linkedin.com/in/kyle-f-770931b3/">linkedin</a><br>
-                Follow me on <a class="link" href="https://github.com/felts94" target="_blank">github</a>, <a
-                    class="link" href="https://twitter.com/iFELTER" target="_blank">twitter</a>, and <a class="link"
-                    href="https://www.instagram.com/felts94/" target="_blank">instagram</a><br>
+                    href="https://www.linkedin.com/in/kyle-f-770931b3/">LinkedIn</a><br>
+                Follow me on <a class="link" href="https://github.com/felts94" target="_blank">GitHub</a>, <a
+                    class="link" href="https://twitter.com/iFELTER" target="_blank">Twitter</a>, and <a class="link"
+                    href="https://www.instagram.com/felts94/" target="_blank">Instagram</a><br>
             </div>
             <h3 class="work projects header">Projects</h3>
             <div class="work projects">
                 <ul class="work projects list">
-                    <li><span class="project">Blog</span> <a class="link small" target="_blank" href="https://github.com/felts94/blog">Code</a>, <a class="link small" target="_blank" href="http://kfelter.com:8082/">Live</a>
-                    <p>
-                        Built with a simple go file server driving this website and Hugo<br>
-                        There is acually a lot going on with this, it serves <a class="link" href="./img00001.JPG" target="_blank">images</a>, <a class="link" href="./song.mp3" target="_blank">songs</a> and <a class="link" href="./dogs.MOV" target="_blank">movies</a>
-                        Deployed on an t2.nano EC2 in AWS<br>
-                    </p></li>
-                    <li>Queue App <a class="link small" target="_blank" href="https://github.com/felts94/queue-app">Code</a>,
-                        <a class="link small" target="_blank" href="http://18.234.196.95:8080/">Live</a></li>
-                    <li>Hueput <a class="link small" target="_blank" href="https://github.com/felts94/CoreColor">Code</a>, <a
-                            class="link small" target="_blank" href="https://s3.amazonaws.com/core-color/index.html">Live</a>
+                    <li><span class="project">Blog</span> <a class="link small" target="_blank"
+                            href="https://github.com/felts94/blog">Code</a>, <a class="link small" target="_blank"
+                            href="http://kfelter.com:8082/">Live</a>
+                        <p>
+                            Built with a simple go file server driving this website and Hugo<br>
+                            Deployed on an t2.nano EC2 in AWS<br>
+                            There is acually a lot going on with this, it serves<br>
+                            <span>
+                                Images Songs and Video<br>
+                                <div><img src="./img00001.JPG" width="320" height="240"></div>
+                                <div><audio controls> song
+                                        <source src="./song.mp3" type="audio/mpeg"></audio>
+                                </div>
+                                <div><video width="320" height="220" controls>video
+                                        <source src="./dogs.MOV" type="video/mp4"></video></div>
+                            </span>
+                        </p>
+                    </li>
+                    <li>Queue App <a class="link small" target="_blank"
+                            href="https://github.com/felts94/queue-app">Code</a>,
+                        <a class="link small" target="_blank" href="http://18.234.196.95:8080/">Live</a>
+                        <p>
+                            Built with Golang and HTML/CSS/JS<br>
+                            Automated traffic is driven to the app with a python script that populates the queue using
+                            rest api
+                            calls<br>
+                            This project is a service that helps TA's manage the queue's for students that need help on
+                            assignments. There is a small go service running the user queue and an HITML website that
+                            creates
+                            the view and allows additions/removals from the queue
+                        </p>
+                    </li>
+                    <li>Hueput <a class="link small" target="_blank"
+                            href="https://github.com/felts94/CoreColor">Code</a>, <a class="link small" target="_blank"
+                            href="https://s3.amazonaws.com/core-color/index.html">Live</a>
+                        <p>
+                            Built with AWS lambda, AWS s3, python3 and react<br>
+                            The static site is hosted in s3 then the site calls the AWS lambda to get/update the
+                            colors<br>
+                            It uses a json file stored in s3 as the Database<br>
+                        </p>
                     </li>
                     <li>Forrest <a class="link small" target="_blank"
                             href="https://github.com/felts94/caverunner/blob/master/fractal.js">Code</a>, <a
                             class="link small" target="_blank"
                             href="https://s3.amazonaws.com/caverunner.co-website/index.html">Live</a>
+                        <p>
+                            This forrest simulator is built using jsvascript and a game making library for
+                            javascript<br>
+                            It uses recursion to generate the tree and flower structures<br>
+                        </p>
                     </li>
                     <li>Arduino memory game <a class="link small" target="_blank"
                             href="https://github.com/felts94/ard-memory-game">Code</a>, <a class="link" target="_blank"
-                            href="https://www.youtube.com/watch?v=zAuerOaZ_Z8">YouTube</a></li>
+                            href="https://www.youtube.com/watch?v=zAuerOaZ_Z8">YouTube</a>
+                        <p>
+                            Built using the arduino sketch IDE, it is remarkably similar to writing c++<br>
+                        </p>
+                    </li>
                 </ul>
             </div>
         </div>

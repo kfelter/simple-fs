@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 )
 
 type Info struct {
@@ -53,28 +54,6 @@ func startHTTPServer() {
 		fmt.Fprintf(w, "ok")
 	})
 	http.HandleFunc("/info", func(w http.ResponseWriter, r *http.Request) {
-		// put cookie in the browser for this url
-		cookie := &http.Cookie{
-			Name:  "root",
-			Value: "http://kylefelter.com",
-			Path:  "/",
-		}
-		http.SetCookie(w, cookie)
-
-		if c, err := r.Cookie("kyle-felter"); err != nil {
-			s, err := rhex(20)
-			if err != nil {
-				log.Printf(err.Error())
-			}
-			cookie = &http.Cookie{
-				Name:  "kyle-felter",
-				Value: fmt.Sprintf("Random hash %s", s),
-				Path:  "http://kfelter.com/",
-			}
-			http.SetCookie(w, cookie)
-		} else {
-			log.Printf("    USER: %s", c.Value)
-		}
 
 		s := strings.Split(r.RemoteAddr, ":")
 
@@ -94,6 +73,7 @@ func startHTTPServer() {
 			IP:      r.RemoteAddr,
 			Info:    info,
 		}
+		WriteLog("./static/visitors.txt", s[0], info.Region, info.City)
 		responseBytes, err := json.Marshal(response)
 		if err != nil {
 			http.Error(w, "unable to marshal response", http.StatusInternalServerError)
@@ -137,6 +117,7 @@ func getUserLocation(ip string) Info {
 		log.Printf("error reading info from %v", resp)
 	}
 	err = json.Unmarshal(respBody, &info)
+	log.Printf("location response %s", respBody)
 	return info
 }
 
@@ -146,4 +127,17 @@ func rhex(n int) (string, error) {
 		return "", err
 	}
 	return hex.EncodeToString(bytes), nil
+}
+
+func WriteLog(fileName, ip, region, city string) {
+	file, err := os.OpenFile(fileName, os.O_WRONLY|os.O_APPEND, 0644)
+	if err != nil {
+		log.Printf("failed opening file: %s", err)
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(fmt.Sprintf("%v, %s, %s, %s\n", time.Now().String(), ip, region, city))
+	if err != nil {
+		log.Printf("failed writing to file: %s", err)
+	}
 }
